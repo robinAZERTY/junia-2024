@@ -8,7 +8,7 @@ class Robot
 {
 public:
     void set_speed(double linear_speed);              ///
-    void set_angulare_speed(double angular_speed);    ///
+    void set_angular_speed(double angular_speed);    ///
 
     double get_speed();
     double get_angular_speed();
@@ -34,3 +34,4 @@ private:
 };
 
 
+#include "robot.cpp"

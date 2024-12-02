@@ -17,10 +17,10 @@ Environment::Environment(double left, double right, double top, double bottom)
     bottom_ = bottom;
 }
 
-double Environment::left() { return left_; }
-double Environment::right() { return right_; }
-double Environment::top() { return top_; }
-double Environment::bottom() { return bottom_; }
+double Environment::left() const{ return left_; }
+double Environment::right() const{ return right_; }
+double Environment::top() const{ return top_; }
+double Environment::bottom() const{ return bottom_; }
 
 unsigned int Environment::get_elements() { return elements_.size(); }
 void Environment::add_element(Element *element)

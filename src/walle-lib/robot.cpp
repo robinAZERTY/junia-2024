@@ -1,7 +1,7 @@
 
 #include "robot.hpp"
 
-double Robot::get_speed()
+double Robot::get_speed() const
 {
     return m_speed;
 }
@@ -16,7 +16,7 @@ void Robot::set_angular_speed(double vitesse_angulaire)
     m_omega = vitesse_angulaire;
 }
 
-double Robot::get_angular_speed()
+double Robot::get_angular_speed() const
 {
 return m_omega;
 }

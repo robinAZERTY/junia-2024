@@ -8,10 +8,10 @@ public:
     Environment(double left=-1, double right=-1,
                 double top=-1, double bottom=-1);
 
-    double left();
-    double right();
-    double top();
-    double bottom();
+    double left() const;
+    double right() const;
+    double top() const;
+    double bottom() const;
 
     unsigned int get_elements();
     void add_element(Element* element);

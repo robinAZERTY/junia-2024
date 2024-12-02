@@ -12,8 +12,8 @@ public:
     void set_speed(double linear_speed);              ///
     void set_angular_speed(double angular_speed);    ///
 
-    double get_speed();
-    double get_angular_speed();
+    double get_speed() const;
+    double get_angular_speed() const;
 
     void stop();
 

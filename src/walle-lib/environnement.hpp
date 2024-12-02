@@ -6,7 +6,7 @@ class Environment
 {
 public:
     Environment(double left=-1, double right=-1,
-                double top=-1, double bottom=1);
+                double top=-1, double bottom=-1);
 
     double left();
     double right();

@@ -1,5 +1,6 @@
 
 #include "robot.hpp"
+#include <cmath>
 
 double Robot::get_speed() const
 {

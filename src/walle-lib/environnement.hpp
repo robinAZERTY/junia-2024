@@ -8,8 +8,14 @@ public:
     Environment(double left=-1, double right=-1,
                 double top=-1, double bottom=1);
 
-    double left() { return -1; }
-    double right() { return -1; }
-    double top() { return -1; }
-    double bottom() { return -1; }
+    double left();
+    double right();
+    double top();
+    double bottom();
+
+private:
+    double left_;
+    double right_;
+    double top_;
+    double bottom_;
 };

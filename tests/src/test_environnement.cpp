@@ -43,7 +43,9 @@ TEST(Environnment, test_add_robot) {
 
     EXPECT_EQ(e.get_elements(), 0);
     e.add_element(new Robot());
-    e.add_element(new Robot());
+    Robot* r = new Robot();
+    e.add_element(r);
     EXPECT_EQ(e.get_elements(), 2);
+    EXPECT_EQ(r->get_environment(), &e);
 
 }

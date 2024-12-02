@@ -12,12 +12,12 @@ class Element {
 
         double get_position_x() const { return position_.x(); }
         double get_position_y() const { return position_.y(); }
-        Vector2 get_position() const { return position_; }
-        
+        Vector2<double> get_position() const { return position_; }
+
         Environment *get_environment() const { return environment_; }
     
     protected :
-        Vector2 position_{0, 0};
+        Vector2<double> position_{0, 0};
         double collision_radius_{0};
         Environment *environment_{nullptr};
 };

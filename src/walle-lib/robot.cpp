@@ -29,7 +29,7 @@ void Robot::stop()
 
 void Robot::run(double dt)
 {
-    m_x += cos(m_theta) * m_speed * dt ;
-    m_y += sin(m_theta) * m_speed * dt ;
+    x_ += cos(m_theta) * m_speed * dt ;
+    y_ += sin(m_theta) * m_speed * dt ;
     m_theta += m_omega * dt ;
 }

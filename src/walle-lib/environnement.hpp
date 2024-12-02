@@ -1,7 +1,8 @@
 #pragma once 
 #include <cmath>
 #include <string>
-
+#include <vector>
+#include "element.hpp"
 class Environment
 {
 public:
@@ -13,9 +14,13 @@ public:
     double top();
     double bottom();
 
+    unsigned int get_elements();
+    void add_element(Element* element);
+
 private:
     double left_;
     double right_;
     double top_;
     double bottom_;
+    std::vector<Element*> elements_;
 };

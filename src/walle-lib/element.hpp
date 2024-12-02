@@ -1,3 +1,5 @@
+#pragma once
+
 class Element {
     public:
         Element() = default;

@@ -30,7 +30,7 @@ void Robot::stop()
 
 void Robot::run(double dt)
 {
-    x_ += cos(m_theta) * m_speed * dt ;
-    y_ += sin(m_theta) * m_speed * dt ;
+    Vector2 vitesse = {cos(m_theta) * m_speed, sin(m_theta) * m_speed};
+    position_ = position_ + vitesse * dt;
     m_theta += m_omega * dt ;
 }

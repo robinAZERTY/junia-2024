@@ -7,7 +7,7 @@ class Robot : public Element
 {
 /// tout le monde peut utiliser (même l'extérieur
 public:
-    Robot(Environment* e=nullptr) : environment(e) {};
+    Robot(Environment* e=nullptr) : Element(e) {}
 
     void set_speed(double linear_speed);              ///
     void set_angular_speed(double angular_speed);    ///

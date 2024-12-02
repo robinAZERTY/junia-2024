@@ -1,11 +1,11 @@
 #pragma once
-// #include "environnement.hpp"
+
 class Environment;
 
 class Element {
     public:
         friend class Environment;
-        
+
         Element(){};
 
         double get_position_x() const { return x_; }

@@ -1,6 +1,6 @@
 #include "environnement.hpp"
 #include <stdexcept>
-#include <iostream>
+
 Environment::Environment(double left, double right, double top, double bottom)
 {
     // throw an exception if the values are not correct

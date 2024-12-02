@@ -1,8 +1,9 @@
-#pragma once 
+#pragma once
 #include <cmath>
 #include <string>
 #include <vector>
 #include "element.hpp"
+
 class Environment
 {
 public:

@@ -9,7 +9,7 @@ class Robot : public Element
 {
 /// tout le monde peut utiliser (même l'extérieur
 public:
-    Robot(Environment* e) : environment(e) {};
+    Robot(Environment* e=nullptr) : environment(e) {};
 
     void set_speed(double linear_speed);              ///
     void set_angular_speed(double angular_speed);    ///
@@ -24,7 +24,7 @@ public:
     void run(double dt);
 
     /// retourne la capacity de la batterie.
-    virtual double get_battery_capacity() = 0;
+    // virtual double get_battery_capacity() = 0;
 
 /// moi et mes enfants on peut y accéder
 private:

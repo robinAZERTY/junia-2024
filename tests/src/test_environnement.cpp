@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <walle-lib/environnement.hpp>
+#include <walle-lib/robot.hpp>
 
 // Validates the behavior of the constructors
 TEST(Environnment, test_constructor) {
@@ -38,12 +39,11 @@ TEST(Environnment, test_add_element) {
 
 TEST(Environnment, test_add_robot) {
     // Creates an environment of size 200m x 200m with right values.
-    Environment e{100,-100,100,-100};
+    Environment e{-100,100,-100,100};
 
-    //EXPECT_EQ(e.get_objects(), 0);
-    //e.add_element(new Robot());
-    //e.add_element(new Robot());
-    //EXPECT_EQ(e.get_elements(), 2);
+    EXPECT_EQ(e.get_elements(), 0);
+    e.add_element(new Robot());
+    e.add_element(new Robot());
+    EXPECT_EQ(e.get_elements(), 2);
 
-    EXPECT_TRUE(false) << "Uncomment the line before";
 }

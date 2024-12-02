@@ -7,6 +7,7 @@ class Element {
         friend class Environment;
 
         Element(Environment *environment = nullptr) : environment_(environment) {}
+        Element(double x, double y, Environment *environment = nullptr) : x_(x), y_(y), environment_(environment) {}
 
         double get_position_x() const { return x_; }
         double get_position_y() const { return y_; }

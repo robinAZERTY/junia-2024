@@ -15,15 +15,8 @@ TEST(Environnment, test_constructor) {
 
 TEST(Environnment, test_constructor_invalid_behavior) {
     // Creates an environment of size 200m x 200m but with wrong
-    // catch the exception
-    try {
-        Environment e{100, -100, -100, 100};
-        FAIL() << "Expected InvalidBoundariesEnvironmentException";
-    } catch (const InvalidBoundariesEnvironmentException &e) {
-        std::cout << e.what() << std::endl;  // Test passed, we caught the exception
-    } catch (...) {
-        FAIL() << "Expected InvalidBoundariesEnvironmentException";
-    }
+    // values.
+    EXPECT_THROW(Environment e(100, -100, -100, 100), InvalidBoundariesEnvironmentException);
     
 }
 

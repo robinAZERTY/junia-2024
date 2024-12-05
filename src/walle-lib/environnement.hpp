@@ -3,6 +3,11 @@
 
 class Element;
 
+class InvalidBoundariesEnvironmentException : public std::exception {
+public:
+    const char* what() const noexcept override;
+};
+
 class Environment
 {
 public:

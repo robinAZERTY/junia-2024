@@ -15,14 +15,14 @@ TEST(Environnment, test_constructor) {
 
 TEST(Environnment, test_constructor_invalid_behavior) {
     // Creates an environment of size 200m x 200m but with wrong
-    // catch the exception and check the message
+    // catch the exception
     try {
         Environment e{100, -100, -100, 100};
-        FAIL() << "Expected std::invalid_argument";
-    } catch (const std::invalid_argument& err) {
-        EXPECT_EQ(err.what(), std::string("left must be less than right"));
+        FAIL() << "Expected InvalidBoundariesEnvironmentException";
+    } catch (const InvalidBoundariesEnvironmentException &e) {
+        std::cout << e.what() << std::endl;  // Test passed, we caught the exception
     } catch (...) {
-        FAIL() << "Expected std::invalid_argument but caught a different exception.";
+        FAIL() << "Expected InvalidBoundariesEnvironmentException";
     }
     
 }

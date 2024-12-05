@@ -2,16 +2,16 @@
 #include "element.hpp"
 #include <stdexcept>
 
+const char* InvalidBoundariesEnvironmentException::what() const noexcept
+{
+    return "Invalid environment boundaries, left must be less than right and top must be less than bottom";
+}
 
 Environment::Environment(double left, double right, double top, double bottom)
 {
     // throw an exception if the values are not correct
-    if (left > right && top > bottom)
-        throw std::invalid_argument("left must be less than right and top must be less than bottom");
-    if (left > right)
-        throw std::invalid_argument("left must be less than right");
-    if (top > bottom)
-        throw std::invalid_argument("top must be less than bottom");
+    if (left > right || top > bottom)
+        throw InvalidBoundariesEnvironmentException();
 
     left_ = left;
     right_ = right;

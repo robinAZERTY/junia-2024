@@ -33,12 +33,11 @@ TEST(Environnment, test_add_element) {
 TEST(Environnment, test_add_robot) {
     // Creates an environment of size 200m x 200m with right values.
     Environment e{-100,100,-100,100};
+    Robot r1, r2;
 
     EXPECT_EQ(e.get_elements(), 0);
-    e.add_element(new Robot());
-    Robot* r = new Robot();
-    e.add_element(r);
+    e.add_element(&r1);
+    e.add_element(&r2);
     EXPECT_EQ(e.get_elements(), 2);
-    EXPECT_EQ(r->get_environment(), &e);
-
+    EXPECT_EQ(r1.get_environment(), &e);
 }

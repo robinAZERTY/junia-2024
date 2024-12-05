@@ -28,5 +28,5 @@ unsigned int Environment::get_elements() { return elements_.size(); }
 void Environment::add_element(Element *element)
 {
     elements_.push_back(element);
-    element->environment_ = this;
+    element->set_environment(this);
 }

@@ -23,10 +23,11 @@ TEST(Environnment, test_constructor_invalid_behavior) {
 TEST(Environnment, test_add_element) {
     // Creates an environment of size 200m x 200m with right values.
     Environment e{-100,100,-100,100};
+    Element e1, e2;
 
     EXPECT_EQ(e.get_elements(), 0);
-    e.add_element(new Element());
-    e.add_element(new Element());
+    e.add_element(&e1);
+    e.add_element(&e2);
     EXPECT_EQ(e.get_elements(), 2);
 }
 

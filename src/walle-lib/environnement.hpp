@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
-#include "element.hpp"
+
+class Element;
 
 class Environment
 {

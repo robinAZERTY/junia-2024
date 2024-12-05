@@ -1,5 +1,7 @@
 #include "environnement.hpp"
+#include "element.hpp"
 #include <stdexcept>
+
 
 Environment::Environment(double left, double right, double top, double bottom)
 {

@@ -22,7 +22,7 @@ public:
     /// update the robot's position and orientation according to its linear and angular speeds.
     int run(double dt);
 
-    bool get_battery_ratio() const { return battery_ / battery_capacity_; }
+    double get_battery_ratio() const { return battery_ / battery_capacity_; }
 
     enum BATTERY_STATUS { OK, LOW, EMPTY };
 private:

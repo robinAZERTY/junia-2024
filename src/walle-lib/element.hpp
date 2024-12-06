@@ -13,12 +13,17 @@ class Element {
         double get_position_y() const { return position_.y(); }
         Vector2<double> get_position() const { return position_; }
         void set_position(double x, double y) { position_ = {x, y}; }
+        void set_position(Vector2<double> position) { position_ = position; }
+
+        double get_orientation() const { return orientation_; }
+        void set_orientation(double orientation) { orientation_ = orientation; }
 
         Environment *get_environment() const { return environment_; }
         void set_environment(Environment *environment) { environment_ = environment; }
     
     protected :
         Vector2<double> position_{0, 0};
+        double orientation_{0};
         double collision_radius_{0};
         Environment *environment_{nullptr};
 };

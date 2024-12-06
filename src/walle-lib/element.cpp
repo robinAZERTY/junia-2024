@@ -31,6 +31,6 @@ double MovableElement::get_mass() const { return mass_; }
 void MovableElement::set_mass(double mass) { mass_ = mass; }
 
 void MovableElement::move_according_velocities(double dt) {
-    orientation_ += angular_speed_ * dt;
     position_ += Vector2<double>{cos(orientation_), sin(orientation_)} * linear_speed_ * dt;
+    orientation_ += angular_speed_ * dt;
 }

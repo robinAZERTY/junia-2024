@@ -53,5 +53,5 @@ class MovableElement : public Element {
     private:
         double linear_speed_{0};
         double angular_speed_{0};
-        double mass_{1};
+        double mass_{0};
 };

@@ -27,3 +27,31 @@ class Element {
         double collision_radius_{0};
         Environment *environment_{nullptr};
 };
+
+class FixedElement : public Element {
+    public:
+        FixedElement(Environment *environment = nullptr) : Element(environment) {}
+        FixedElement(double x, double y, Environment *environment = nullptr) : Element(x, y, environment) {}
+};
+
+class MovableElement : public Element {
+    public:
+        MovableElement(Environment *environment = nullptr) : Element(environment) {}
+        MovableElement(double x, double y, Environment *environment = nullptr) : Element(x, y, environment) {}
+
+        double get_linear_speed() const { return linear_speed_; }
+        void set_linear_speed(double linear_speed) { linear_speed_ = linear_speed; }
+
+        double get_angular_speed() const { return angular_speed_; }
+        void set_angular_speed(double angular_speed) { angular_speed_ = angular_speed; }
+        
+
+        void move_according_velocities(double dt) {
+            orientation_ += angular_speed_ * dt;
+            position_ += Vector2<double>{cos(orientation_), sin(orientation_)} * linear_speed_ * dt;
+        }
+
+    private:
+        double linear_speed_{0};
+        double angular_speed_{0};
+};

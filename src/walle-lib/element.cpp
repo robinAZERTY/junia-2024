@@ -27,6 +27,9 @@ void MovableElement::set_linear_speed(double linear_speed) { linear_speed_ = lin
 double MovableElement::get_angular_speed() const { return angular_speed_; }
 void MovableElement::set_angular_speed(double angular_speed) { angular_speed_ = angular_speed; }
 
+double MovableElement::get_mass() const { return mass_; }
+void MovableElement::set_mass(double mass) { mass_ = mass; }
+
 void MovableElement::move_according_velocities(double dt) {
     orientation_ += angular_speed_ * dt;
     position_ += Vector2<double>{cos(orientation_), sin(orientation_)} * linear_speed_ * dt;

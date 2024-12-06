@@ -45,9 +45,13 @@ class MovableElement : public Element {
         double get_angular_speed() const;
         void set_angular_speed(double angular_speed);
 
+        double get_mass() const;
+        void set_mass(double mass);
+
         void move_according_velocities(double dt);
 
     private:
         double linear_speed_{0};
         double angular_speed_{0};
+        double mass_{1};
 };

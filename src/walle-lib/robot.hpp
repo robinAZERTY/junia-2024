@@ -9,10 +9,10 @@ class Robot : public Element
 public:
     Robot(Environment* e=nullptr) : Element(e) {}
 
-    void set_speed(double linear_speed);              ///
+    void set_linear_speed(double linear_speed);              ///
     void set_angular_speed(double angular_speed);    ///
 
-    double get_speed() const;
+    double get_linear_speed() const;
     double get_angular_speed() const;
 
     void stop();
@@ -28,8 +28,8 @@ public:
 private:
     double m_theta{0};  /// position angulaire
 
-    double m_speed{0};/// vitesse linéaire
-    double m_omega{0};  /// vitesse angulaire
+    double linear_speed_{0};/// vitesse linéaire
+    double angular_speed_{0};  /// vitesse angulaire
 
 protected:
     Environment* environment {nullptr}; //pointeur

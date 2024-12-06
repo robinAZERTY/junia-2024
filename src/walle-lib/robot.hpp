@@ -2,16 +2,17 @@
 
 #include "environnement.hpp"
 #include "element.hpp"
-/// Décrire un objet.
+
+/// Generic robot class inheriting from MovableElement (can move in the environment).
 class Robot : public MovableElement
 {
-/// tout le monde peut utiliser (même l'extérieur
 public:
     Robot(Environment* e=nullptr) : MovableElement(e) {}
 
+    /// Stops the robot.
     void stop();
 
-    /// Met à jour le robot en fonction du temps écoulé depuis la dernière mise à jour.
+    /// update the robot's position and orientation according to its linear and angular speeds.
     void run(double dt);
 
 };

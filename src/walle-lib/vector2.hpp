@@ -20,6 +20,9 @@ public:
     bool operator==(const Vector2& other) const { return std::abs(_x-other._x) < 1e-5 && std::abs(_y-other._y)<1e-5; }
     bool operator!=(const Vector2& other) const { return !(*this == other); }
 
+    void operator+=(const Vector2& other) { _x+=other._x; _y+=other._y; }
+    void operator-=(const Vector2& other) { _x-=other._x; _y-=other._y; }
+
     T x() const { return _x;}
     T y() const { return _y;}
 

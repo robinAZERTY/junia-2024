@@ -24,7 +24,6 @@ public:
 
     double get_battery_ratio() const { return battery_ / battery_capacity_; }
 
-    enum BATTERY_STATUS { OK, LOW, EMPTY };
 private:
     int update_battery(double dt);
 

@@ -14,11 +14,11 @@ int Robot::run(double dt)
     auto battery_status = update_battery(dt);
     move_according_velocities(dt);
     
-    if (battery_status == Robot::BATTERY_STATUS::EMPTY)
+    if (battery_status == Robot::STATUS::EMPTY_BATTERY)
         return Robot::STATUS::EMPTY_BATTERY;
-    if (battery_status == Robot::BATTERY_STATUS::LOW)
+    if (battery_status == Robot::STATUS::LOW_BATTERY)
         return Robot::STATUS::LOW_BATTERY;
-    
+
     return 0;
 }
 
@@ -30,10 +30,10 @@ int Robot::update_battery(double dt)
     if (battery_ <= 0)
     {
         stop();
-        return Robot::BATTERY_STATUS::EMPTY;
+        return Robot::Robot::STATUS::EMPTY_BATTERY;
     }
     if (battery_ < RobotEnergyProperties::LOW_BATTERY_THRESHOLD * battery_capacity_)
-        return Robot::BATTERY_STATUS::LOW;
+        return Robot::STATUS::LOW_BATTERY;
 
-    return Robot::BATTERY_STATUS::OK;
+    return Robot::STATUS::OK;
 }

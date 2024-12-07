@@ -28,4 +28,6 @@ TEST(Hole, test_set_element_inside)
     EXPECT_EQ(h.get_element_inside()->get_position_x(), 1.0);
     EXPECT_EQ(h.get_element_inside()->get_position_y(), 2.0);
 
+    h.set_element_inside(nullptr);
+    EXPECT_EQ(h.get_element_inside(), nullptr);
 }

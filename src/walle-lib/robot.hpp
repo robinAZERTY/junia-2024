@@ -9,6 +9,11 @@ namespace RobotEnergyProperties {
     constexpr double LOW_BATTERY_THRESHOLD = 0.1; // ratio
 }
 
+template <typename T>
+T min(T a, T b) {
+    return a < b ? a : b;
+}
+
 /// Generic robot class inheriting from MovableElement (can move in the environment).
 class Robot : public MovableElement
 {
@@ -23,6 +28,9 @@ public:
     int run(double dt);
 
     double get_battery_ratio() const { return battery_ / battery_capacity_; }
+
+    const double get_battery() const { return battery_; }
+    void set_battery(double battery) { battery_ = min(battery, battery_capacity_); }
 
 private:
     int update_battery(double dt);

@@ -2,6 +2,14 @@
 #include "robot.hpp"
 #include <cmath>
 
+Robot::Robot(Environment *e, double mass, double size) : MovableElement(e)
+{
+    set_size(size);
+    set_mass(mass);
+
+    if (e)
+        e->add_element(this);
+}
 
 void Robot::stop()
 {
@@ -13,7 +21,7 @@ int Robot::run(double dt)
 {
     auto battery_status = update_battery(dt);
     move_according_velocities(dt);
-    
+
     if (battery_status == Robot::STATUS::EMPTY_BATTERY)
         return Robot::STATUS::EMPTY_BATTERY;
     if (battery_status == Robot::STATUS::LOW_BATTERY)

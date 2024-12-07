@@ -13,7 +13,7 @@ namespace RobotEnergyProperties {
 class Robot : public MovableElement
 {
 public:
-    Robot(Environment* e=nullptr, double mass=10) : MovableElement(e) {set_mass(mass); }
+    Robot(Environment* e=nullptr, double mass=10, double size=0.5);
 
     /// Stops the robot.
     void stop();

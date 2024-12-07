@@ -15,6 +15,9 @@ void Element::set_orientation(double orientation) { orientation_ = orientation; 
 double Element::get_size() const { return size_; }
 void Element::set_size(double size) { size_ = size; }
 
+double Element::get_collision_radius() const { return collision_radius_; }
+void Element::set_collision_radius(double collision_radius) { collision_radius_ = collision_radius; }
+
 Environment *Element::get_environment() const { return environment_; }
 void Element::set_environment(Environment *environment) { environment_ = environment; }
 

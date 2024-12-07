@@ -23,6 +23,10 @@ class Element {
 
         double get_size() const;
         void set_size(double size);
+
+        double get_collision_radius() const;
+        void set_collision_radius(double collision_radius);
+        
     protected :
         Vector2<double> position_{0, 0};
         double orientation_{0};

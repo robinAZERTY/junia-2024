@@ -12,6 +12,9 @@ void Element::set_position(Vector2<double> position) { position_ = position; }
 double Element::get_orientation() const { return orientation_; }
 void Element::set_orientation(double orientation) { orientation_ = orientation; }
 
+double Element::get_size() const { return size_; }
+void Element::set_size(double size) { size_ = size; }
+
 Environment *Element::get_environment() const { return environment_; }
 void Element::set_environment(Environment *environment) { environment_ = environment; }
 

@@ -20,11 +20,14 @@ class Element {
 
         Environment *get_environment() const;
         void set_environment(Environment *environment);
-    
+
+        double get_size() const;
+        void set_size(double size);
     protected :
         Vector2<double> position_{0, 0};
         double orientation_{0};
         double collision_radius_{0};
+        double size_{0};
         Environment *environment_{nullptr};
 };
 

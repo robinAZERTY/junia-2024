@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-
+#include "vector2.hpp"
 class Element;
 
 class InvalidBoundariesEnvironmentException : public std::exception {
@@ -19,7 +19,10 @@ public:
     double top() const;
     double bottom() const;
 
-    unsigned int get_elements();
+    Vector2<double> center() const;
+
+    const std::vector<Element*> get_elements() const;
+    unsigned int get_elements_number() const;
     void add_element(Element* element);
 
 private:

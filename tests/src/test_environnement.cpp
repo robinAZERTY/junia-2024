@@ -25,10 +25,10 @@ TEST(Environnment, test_add_element) {
     Environment e{-100,100,-100,100};
     Element e1, e2;
 
-    EXPECT_EQ(e.get_elements(), 0);
+    EXPECT_EQ(e.get_elements_number(), 0);
     e.add_element(&e1);
     e.add_element(&e2);
-    EXPECT_EQ(e.get_elements(), 2);
+    EXPECT_EQ(e.get_elements_number(), 2);
 }
 
 TEST(Environnment, test_add_robot) {
@@ -36,9 +36,9 @@ TEST(Environnment, test_add_robot) {
     Environment e{-100,100,-100,100};
     Robot r1, r2;
 
-    EXPECT_EQ(e.get_elements(), 0);
+    EXPECT_EQ(e.get_elements_number(), 0);
     e.add_element(&r1);
     e.add_element(&r2);
-    EXPECT_EQ(e.get_elements(), 2);
+    EXPECT_EQ(e.get_elements_number(), 2);
     EXPECT_EQ(r1.get_environment(), &e);
 }

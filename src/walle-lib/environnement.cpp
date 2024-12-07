@@ -24,7 +24,15 @@ double Environment::right() const{ return right_; }
 double Environment::top() const{ return top_; }
 double Environment::bottom() const{ return bottom_; }
 
-unsigned int Environment::get_elements() { return elements_.size(); }
+Vector2<double> Environment::center() const
+{
+    return Vector2<double>{(left_ + right_) / 2, (top_ + bottom_) / 2};
+}
+
+unsigned int Environment::get_elements_number() const { return elements_.size(); }
+
+const std::vector<Element*> Environment::get_elements() const { return elements_; }
+
 void Environment::add_element(Element *element)
 {
     elements_.push_back(element);

@@ -19,6 +19,8 @@ add_library(walle-lib SHARED
             src/walle-lib/environnementLogger.hpp
             src/walle-lib/hole.cpp
             src/walle-lib/hole.hpp
+            src/walle-lib/tree.cpp
+            src/walle-lib/tree.hpp
             )
 
 target_include_directories(walle-lib
@@ -45,6 +47,7 @@ add_executable(all-tests
   tests/src/test_environnement.cpp
   tests/src/test_element.cpp
   tests/src/test_hole.cpp
+  tests/src/test_tree.cpp
 )
 
 target_link_libraries(

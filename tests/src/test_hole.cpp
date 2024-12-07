@@ -21,9 +21,9 @@ TEST(Hole, test_set_element_inside)
     Hole h;
     Robot r;
     h.set_position(1.0, 2.0);
-    h.set_collision_radius(0.5);
+    h.set_size(0.5);
     r.set_collision_radius(0.4);
-    h.set_element_inside(&r);
+    EXPECT_EQ(h.set_element_inside(&r),0);
     EXPECT_EQ(h.get_element_inside(), &r);
     EXPECT_EQ(h.get_element_inside()->get_position_x(), 1.0);
     EXPECT_EQ(h.get_element_inside()->get_position_y(), 2.0);

@@ -1,7 +1,6 @@
 #include "element.hpp"
 
-Element::Element(Environment *environment) : environment_(environment) {}
-Element::Element(double x, double y, Environment *environment) : position_(x,y), environment_(environment) {}
+Element::Element(Environment *environment, double x, double y) : position_(x,y), environment_(environment) {}
 
 double Element::get_position_x() const { return position_.x(); }
 double Element::get_position_y() const { return position_.y(); }
@@ -21,11 +20,9 @@ void Element::set_collision_radius(double collision_radius) { collision_radius_ 
 Environment *Element::get_environment() const { return environment_; }
 void Element::set_environment(Environment *environment) { environment_ = environment; }
 
-FixedElement::FixedElement(Environment *environment) : Element(environment) {}
-FixedElement::FixedElement(double x, double y, Environment *environment) : Element(x, y, environment) {}
+FixedElement::FixedElement(Environment *environment, double x, double y) : Element(environment, x, y ) {}
 
-MovableElement::MovableElement(Environment *environment) : Element(environment) {}
-MovableElement::MovableElement(double x, double y, Environment *environment) : Element(x, y, environment) {}
+MovableElement::MovableElement(Environment *environment, double x, double y) : Element(environment, x, y) {}
 
 double MovableElement::get_linear_speed() const { return linear_speed_; }
 void MovableElement::set_linear_speed(double linear_speed) { linear_speed_ = linear_speed; }

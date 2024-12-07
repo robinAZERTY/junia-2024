@@ -13,8 +13,7 @@ namespace TreeProperties {
 
 class Tree : public FixedElement {
     public:
-        Tree(Environment *environment = nullptr) ;
-        Tree(double x, double y, Environment *environment = nullptr) ;
+        Tree(Environment *environment = nullptr, double x=0, double y=0) : FixedElement(environment, x, y) {size_ = TreeProperties::MIN_SIZE;}
 
         void plant();
 

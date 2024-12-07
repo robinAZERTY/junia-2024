@@ -1,9 +1,5 @@
 #include "tree.hpp"
 
-Tree::Tree(Environment *environment) : FixedElement(environment) { size_ = TreeProperties::MIN_SIZE; }
-
-Tree::Tree(double x, double y, Environment *environment) : FixedElement(x, y, environment) { size_ = TreeProperties::MIN_SIZE; }
-
 void Tree::plant()
 {
     collision_radius_ = size_ / 2;

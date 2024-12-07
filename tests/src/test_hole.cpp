@@ -10,7 +10,7 @@ TEST(Hole, test_constructor)
     EXPECT_NEAR(h.get_position_x(), 0.0, 0.00001);
     EXPECT_NEAR(h.get_position_y(), 0.0, 0.00001);
 
-    Hole h1(1.0, 2.0);
+    Hole h1(nullptr, 1.0, 2.0);
 
     EXPECT_NEAR(h1.get_position_x(), 1.0, 0.00001);
     EXPECT_NEAR(h1.get_position_y(), 2.0, 0.00001);

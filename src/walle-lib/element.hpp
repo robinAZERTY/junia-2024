@@ -6,8 +6,7 @@ class Environment;
 class Element {
     public:
 
-        Element(Environment *environment = nullptr);
-        Element(double x, double y, Environment *environment = nullptr);
+        Element(Environment *environment = nullptr, double x=0, double y=0);
 
         double get_position_x() const;
         double get_position_y() const;
@@ -37,14 +36,12 @@ class Element {
 
 class FixedElement : public Element {
     public:
-        FixedElement(Environment *environment = nullptr);
-        FixedElement(double x, double y, Environment *environment = nullptr);
+        FixedElement(Environment *environment = nullptr, double x=0, double y=0);
 };
 
 class MovableElement : public Element {
     public:
-        MovableElement(Environment *environment = nullptr);
-        MovableElement(double x, double y, Environment *environment = nullptr);
+        MovableElement(Environment *environment = nullptr, double x=0, double y=0);
 
         double get_linear_speed() const;
         void set_linear_speed(double linear_speed);

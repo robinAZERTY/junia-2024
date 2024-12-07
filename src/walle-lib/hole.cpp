@@ -1,9 +1,5 @@
 #include "hole.hpp"
 
-Hole::Hole(Environment *environment) : FixedElement(environment) {}
-
-Hole::Hole(double x, double y, Environment *environment) : FixedElement(x, y, environment) {}
-
 double Hole::get_depth() const { return depth_; }
 
 void Hole::set_depth(double depth) { depth_ = depth; }

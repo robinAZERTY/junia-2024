@@ -8,6 +8,7 @@ TEST(Tree, test_constructor)
     EXPECT_NEAR(t.get_height(), TreeProperties::MIN_HEIGHT, 0.00001);
 }
 
+/// A tree should grow in size and height when fed with nutrients
 TEST(Tree, test_growth)
 {
     Tree t;
@@ -24,8 +25,8 @@ TEST(Tree, test_growth)
         EXPECT_LE(t.get_size(), TreeProperties::MAX_SIZE);
         EXPECT_GE(t.get_height(), TreeProperties::MIN_HEIGHT);
         EXPECT_LE(t.get_height(), TreeProperties::MAX_HEIGHT);
-        EXPECT_GE(t.get_size(), last_grow_state.x());
-        EXPECT_GE(t.get_height(), last_grow_state.y());
+        EXPECT_GT(t.get_size(), last_grow_state.x());
+        EXPECT_GT(t.get_height(), last_grow_state.y());
         
     }
 }

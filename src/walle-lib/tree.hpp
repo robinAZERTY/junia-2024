@@ -8,7 +8,7 @@ namespace TreeProperties {
     constexpr double MAX_SIZE = 0.6;
     constexpr double MIN_NUTRIENTS = 0.1;
     constexpr double MIN_SIZE = 0.06;
-    constexpr double MIN_HEIGHT = 0.3;
+    constexpr double MIN_HEIGHT = 0.5;
 }
 
 class Tree : public FixedElement {

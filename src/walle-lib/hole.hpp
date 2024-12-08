@@ -14,6 +14,8 @@ class Hole : public FixedElement {
         Tree* get_tree_inside() const;
         int set_tree_inside(Tree* tree);
 
+        bool fit(Tree* tree) const;
+
         int update(double dt) override{return 0;}
 
 

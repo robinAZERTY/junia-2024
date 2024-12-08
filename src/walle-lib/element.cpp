@@ -42,7 +42,6 @@ bool Element::is_colliding(const Element &element) const
     return (position_ - element.position_).norm2() < collision_radius_ + element.collision_radius_;
 }
 
-
 FixedElement::FixedElement(Environment *environment, double x, double y) : Element(environment, x, y)
 {
     id_counter++;
@@ -68,4 +67,34 @@ void MovableElement::move_according_speeds(double dt)
 {
     position_ += Vector2<double>{cos(orientation_), sin(orientation_)} * linear_speed_ * dt;
     orientation_ += angular_speed_ * dt;
+
+    collision_handing();
+}
+
+void MovableElement::collision_handing()
+{
+    if (!environment_)
+        return;
+
+    for (Element *element : environment_->get_elements<Element>())
+    {
+        if (element == this || !is_colliding(*element))
+            continue;
+
+        Vector2<double> relative_move = (position_ - element->get_position());
+        double distance = relative_move.norm2();
+        double overlap = collision_radius_ + element->get_collision_radius() - distance;
+        relative_move.normalize();
+
+        if (FixedElement *fixed_element = dynamic_cast<FixedElement *>(element))
+            position_ += relative_move * overlap; // push the movable element
+
+        else if (MovableElement *movable_element = dynamic_cast<MovableElement *>(element))
+        {
+            // push both elements according to their masses
+            double total_mass = mass_ + movable_element->get_mass();
+            position_ += relative_move * overlap * (mass_ / total_mass);
+            movable_element->set_position(movable_element->get_position() - relative_move * overlap * (movable_element->get_mass() / total_mass));
+        }
+    }
 }

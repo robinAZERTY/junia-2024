@@ -88,6 +88,8 @@ public:
     void move_according_speeds(double dt);
 
 protected:
+    void collision_handing();
+
     double linear_speed_{0};
     double angular_speed_{0};
     double mass_{0};

@@ -35,6 +35,9 @@ std::vector<Element*> Environment::get_elements() const { return elements_; }
 
 void Environment::add_element(Element *element)
 {
+    for (Element *e : elements_)
+        if (e == element)
+            return; // if it is already in the list, do nothing
     elements_.push_back(element);
     element->set_environment(this);
 }

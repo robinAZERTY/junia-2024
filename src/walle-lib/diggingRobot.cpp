@@ -33,25 +33,41 @@ void DiggingRobot::stop_filling()
 int DiggingRobot::update(double dt)
 {
     Robot::update(dt);
-    if (is_digging_ || is_filling_)
+
+    auto hole = nearest<Hole>();
+    if (is_digging_)
     {
         // is there already an hole? if not, create one
-        auto hole = nearest<Hole>();
         if (!hole)
         {
-            hole = new Hole(environment_, get_position_x(), get_position_y());
+            hole = new Hole();
+            hole->set_position(get_position());
             hole->set_size(DiggingRobotProperties::DIGGING_SIZE);
             environment_->add_element(hole);
         }
-        double delta = 0;
-        if (is_filling_)
-            delta -= DiggingRobotProperties::FILLING_SPEED; // fill
-        if (is_digging_)
-            delta += DiggingRobotProperties::DIGGING_SPEED; // dig
-        delta *= dt;
+
+        double delta = DiggingRobotProperties::DIGGING_SPEED*dt;
         hole->set_depth(hole->get_depth() + delta);
         soil_quantity_ -= delta;
         mass_ -= delta * DiggingRobotProperties::SOIL_DENSITY;
+    }
+
+    if (is_filling_)
+    {
+        if (!hole)
+            return -1; // no hole to fill
+
+        double delta = -DiggingRobotProperties::FILLING_SPEED*dt; // fill
+        hole->set_depth(hole->get_depth() + delta);
+        soil_quantity_ -= delta;
+        mass_ -= delta * DiggingRobotProperties::SOIL_DENSITY;
+
+        if (hole->get_depth() <= 0)
+        {
+            // environment_->remove_element(hole); todo
+            delete hole;
+        }
+
     }
     return 0;
 }

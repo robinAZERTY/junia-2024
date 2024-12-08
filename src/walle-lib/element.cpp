@@ -8,6 +8,8 @@ Element::Element(Environment *environment, double x, double y) : position_(x, y)
 {
     id_counter++;
     label_ = "Element" + std::to_string(id_counter);
+    if (environment)
+        environment->add_element(this);
 }
 
 double Element::get_position_x() const { return position_.x(); }

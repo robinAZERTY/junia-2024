@@ -44,5 +44,4 @@ protected:
 // need to implement the following classes:
 // class DiggingRobot : public Robot
 // class PantingRobot : public Robot
-// class SoilCovererRobot : public Robot
 // class WateringRobot : public Robot

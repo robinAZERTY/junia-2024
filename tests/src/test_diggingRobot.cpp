@@ -26,3 +26,17 @@ TEST(DiggingRobot, test_digging) {
     EXPECT_EQ(h[0]->get_position().x(), r.get_position().x());
     EXPECT_EQ(h[0]->get_position().y(), r.get_position().y());
 }
+
+TEST(DiggingRobot, test_filling) {
+    Environment e;
+    DiggingRobot r(&e, 10, 0.5);
+
+    r.fill_soil();
+    r.update(1);
+    auto h = e.get_elements<Hole>();
+    EXPECT_EQ(h.size(), 1);
+    EXPECT_EQ(h[0]->get_size(), DiggingRobotProperties::DIGGING_SIZE);
+    EXPECT_EQ(h[0]->get_depth(), -DiggingRobotProperties::FILLING_SPEED);
+    EXPECT_EQ(h[0]->get_position().x(), r.get_position().x());
+    EXPECT_EQ(h[0]->get_position().y(), r.get_position().y());
+}

@@ -1,0 +1,85 @@
+# # name: Generate Doxygen Documentation
+# # on:
+# #     push:
+# #       branches:
+# #         - main
+# # jobs:
+# #   generate-docs:
+# #     name: Generate Doxygen Documentation
+# #     runs-on: ubuntu-latest
+
+# #     steps:
+# #     # 1. Checkout the repository
+# #     - name: Checkout code
+# #       uses: actions/checkout@v3
+
+# #     # 2. Set up Doxygen
+# #     - name: Install Doxygen
+# #       run: sudo apt-get install -y doxygen
+
+# #     # 3. Generate the Doxygen configuration and documentation
+# #     - name: Generate Doxygen Documentation
+# #       run: |
+# #         mkdir -p docs/doxygen
+# #         doxygen -g  # Generate a temporary Doxyfile
+# #         sed -i 's/^OUTPUT_DIRECTORY.*/OUTPUT_DIRECTORY = docs\/doxygen/' Doxyfile
+# #         sed -i 's/^EXTRACT_ALL.*/EXTRACT_ALL = YES/' Doxyfile
+# #         sed -i 's/^INPUT.*/INPUT = include src README.md/' Doxyfile
+# #         sed -i 's/^RECURSIVE.*/RECURSIVE = YES/' Doxyfile
+# #         sed -i 's/^USE_MDFILE_AS_MAINPAGE.*/USE_MDFILE_AS_MAINPAGE = README.md/' Doxyfile
+# #         sed -i 's/^GENERATE_LATEX.*/GENERATE_LATEX = NO/' Doxyfile
+# #         doxygen Doxyfile
+
+# #     # 4. Commit and push the changes
+# #     - name: Commit and Push changes
+# #       run: |
+# #         git config --global user.name "github-actions"
+# #         git config --global user.email "actions@github.com"
+# #         git fetch origin release  # Récupérer les dernières modifications de la branche 'release'
+# #         git checkout release      # Passer explicitement à la branche 'release'
+# #         git add docs/doxygen/*
+# #         git commit -m "Update Doxygen documentation"
+# #         git pull origin release --rebase  # S'assurer que la branche locale est à jour
+# #         git push origin release           # Pousser les changements vers la branche 'release'
+# #       env:
+# #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+# name: Generate Documentation from Another Repo
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   generate_docs:
+#     name: Generate Documentation for Remote Repository
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     # Étape 1 : Vérifier le code source de votre projet (facultatif)
+#     - name: Checkout main repository
+#       uses: actions/checkout@v3
+
+#     # Étape 2 : Cloner le dépôt distant
+#     - name: Clone the target repository
+#       run: |
+#         git clone https://github.com/damienmarchal/junia-2024.git
+#         cd REMOTE_REPO
+
+#     # Étape 3 : Installer Doxygen
+#     - name: Install Doxygen
+#       run: sudo apt-get install -y doxygen graphviz
+
+#     # Étape 4 : Générer la documentation pour le dépôt distant
+#     - name: Generate Documentation
+#       run: |
+#         cd REMOTE_REPO
+#         doxygen Doxyfile
+
+#     # Étape 5 : Déployer la documentation (par exemple, sur GitHub Pages)
+#     - name: Deploy Documentation
+#       uses: peaceiris/actions-gh-pages@v3
+#       with:
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
+#         publish_dir: REMOTE_REPO/docs  # Modifier selon le chemin de sortie configuré dans `Doxyfile`

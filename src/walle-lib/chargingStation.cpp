@@ -12,6 +12,7 @@ int ChargingStation::attach(Robot* robot) {
     if (!isNear(robot)) {
         return -1;
     }
+    robot->stop();
     robotsInCharge_.push_back(robot);
     return 0;
 }

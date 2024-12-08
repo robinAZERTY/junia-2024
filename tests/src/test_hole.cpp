@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <walle-lib/hole.hpp>
-#include <walle-lib/robot.hpp>
+#include <walle-lib/tree.hpp>
 
 // Validates the behavior of the constructors
 TEST(Hole, test_constructor)
@@ -19,15 +19,14 @@ TEST(Hole, test_constructor)
 TEST(Hole, test_set_element_inside)
 {
     Hole h;
-    Robot r;
+    Tree t;
     h.set_position(1.0, 2.0);
     h.set_size(0.5);
-    r.set_collision_radius(0.4);
-    EXPECT_EQ(h.set_element_inside(&r),0);
-    EXPECT_EQ(h.get_element_inside(), &r);
-    EXPECT_EQ(h.get_element_inside()->get_position_x(), 1.0);
-    EXPECT_EQ(h.get_element_inside()->get_position_y(), 2.0);
+    EXPECT_EQ(h.set_tree_inside(&t),0);
+    EXPECT_EQ(h.get_tree_inside(), &t);
+    EXPECT_EQ(h.get_tree_inside()->get_position_x(), 1.0);
+    EXPECT_EQ(h.get_tree_inside()->get_position_y(), 2.0);
 
-    h.set_element_inside(nullptr);
-    EXPECT_EQ(h.get_element_inside(), nullptr);
+    h.set_tree_inside(nullptr);
+    EXPECT_EQ(h.get_tree_inside(), nullptr);
 }

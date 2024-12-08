@@ -1,6 +1,7 @@
 #pragma once
 
 #include "element.hpp"
+#include "tree.hpp"
 
 
 class Hole : public FixedElement {
@@ -10,14 +11,14 @@ class Hole : public FixedElement {
         double get_depth() const;
         void set_depth(double depth);
 
-        Element* get_element_inside() const;
-        int set_element_inside(Element* element_inside);
+        Tree* get_tree_inside() const;
+        int set_tree_inside(Tree* tree);
 
         int update(double dt) override{return 0;}
 
 
     private:
         double depth_{0};
-        Element* element_inside_{nullptr};
+        Tree* tree_inside_{nullptr};
         static unsigned int id_counter;
 };

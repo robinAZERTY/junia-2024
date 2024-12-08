@@ -1,6 +1,13 @@
 #include "chargingStation.hpp"
 #include <algorithm>
 
+unsigned int ChargingStation::id_counter = 0;
+
+ChargingStation::ChargingStation(Environment *environment, double x, double y) : FixedElement(environment, x, y) {
+    id_counter++;
+    label_ = "ChargingStation" + std::to_string(id_counter);
+}
+
 int ChargingStation::attach(Robot* robot) {
     if (!isNear(robot)) {
         return -1;

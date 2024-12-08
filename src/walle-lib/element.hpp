@@ -1,5 +1,6 @@
 #pragma once
 #include "vector2.hpp"
+#include <string>
 
 class Environment;
 
@@ -27,6 +28,8 @@ class Element {
         void set_collision_radius(double collision_radius);
 
         virtual int update(double dt) = 0;
+
+        std::string get_label() const;
         
     protected :
         Vector2<double> position_{0, 0};
@@ -34,11 +37,16 @@ class Element {
         double collision_radius_{0};
         double size_{0};
         Environment *environment_{nullptr};
+        std::string label_;
+        static unsigned int id_counter;
+
 };
 
 class FixedElement : public Element {
     public:
         FixedElement(Environment *environment = nullptr, double x=0, double y=0);
+    protected:
+        static unsigned int id_counter;
 };
 
 class MovableElement : public Element {
@@ -56,8 +64,10 @@ class MovableElement : public Element {
 
         void move_according_speeds(double dt);
 
-    private:
+    protected:
         double linear_speed_{0};
         double angular_speed_{0};
         double mass_{0};
+        static unsigned int id_counter;
+
 };

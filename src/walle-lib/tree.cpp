@@ -1,5 +1,13 @@
 #include "tree.hpp"
 
+unsigned int Tree::id_counter = 0;
+
+Tree::Tree(Environment *environment, double x, double y) : FixedElement(environment, x, y)
+{
+    id_counter++;
+    label_ = "Tree" + std::to_string(id_counter);
+    size_ = TreeProperties::MIN_SIZE;
+}
 void Tree::plant()
 {
     collision_radius_ = size_ / 2;

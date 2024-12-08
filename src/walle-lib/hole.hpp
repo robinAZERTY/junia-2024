@@ -5,7 +5,7 @@
 
 class Hole : public FixedElement {
     public:
-        Hole(Environment *environment = nullptr, double x=0, double y=0): FixedElement(environment, x, y) {}
+        Hole(Environment *environment = nullptr, double x=0, double y=0);
 
         double get_depth() const;
         void set_depth(double depth);
@@ -19,4 +19,5 @@ class Hole : public FixedElement {
     private:
         double depth_{0};
         Element* element_inside_{nullptr};
+        static unsigned int id_counter;
 };

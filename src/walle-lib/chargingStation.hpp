@@ -12,7 +12,7 @@ namespace ChargingStationProperties {
 
 class ChargingStation : public FixedElement {
     public:
-        ChargingStation(Environment *environment = nullptr, double x=0, double y=0) : FixedElement(environment, x, y) {}
+        ChargingStation(Environment *environment = nullptr, double x=0, double y=0);
 
         int attach(Robot* robot);
         void detach(Robot* robot);
@@ -21,4 +21,5 @@ class ChargingStation : public FixedElement {
 
     private:
         std::vector<Robot*> robotsInCharge_;
+        static unsigned int id_counter;
 };

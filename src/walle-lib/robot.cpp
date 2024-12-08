@@ -2,8 +2,12 @@
 #include "robot.hpp"
 #include <cmath>
 
+unsigned int Robot::id_counter = 0;
+
 Robot::Robot(Environment *e, double mass, double size) : MovableElement(e)
 {
+    id_counter++;
+    label_ = "Robot" + std::to_string(id_counter);
     set_size(size);
     set_mass(mass);
 

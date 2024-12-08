@@ -37,6 +37,7 @@ private:
 
     double battery_capacity_ = 1e5; // J
     double battery_ = battery_capacity_;
+    static unsigned int id_counter;
 
 };
 

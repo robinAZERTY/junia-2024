@@ -1,5 +1,13 @@
 #include "hole.hpp"
 
+unsigned int Hole::id_counter = 0;
+
+Hole::Hole(Environment *environment, double x, double y) : FixedElement(environment, x, y)
+{
+    id_counter++;
+    label_ = "Hole" + std::to_string(id_counter);
+}
+
 double Hole::get_depth() const { return depth_; }
 
 void Hole::set_depth(double depth) { depth_ = depth; }

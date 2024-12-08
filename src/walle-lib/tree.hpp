@@ -13,7 +13,7 @@ namespace TreeProperties {
 
 class Tree : public FixedElement {
     public:
-        Tree(Environment *environment = nullptr, double x=0, double y=0) : FixedElement(environment, x, y) {size_ = TreeProperties::MIN_SIZE;}
+        Tree(Environment *environment = nullptr, double x=0, double y=0);
 
         void plant();
 
@@ -27,4 +27,5 @@ class Tree : public FixedElement {
         double height_{TreeProperties::MIN_HEIGHT};
         double soil_nutrients_{0};
         bool planted_{false};
+        static unsigned int id_counter;
 };

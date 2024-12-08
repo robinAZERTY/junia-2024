@@ -1,6 +1,13 @@
 #include "element.hpp"
 
-Element::Element(Environment *environment, double x, double y) : position_(x,y), environment_(environment) {}
+unsigned int Element::id_counter = 0;
+unsigned int FixedElement::id_counter = 0;
+unsigned int MovableElement::id_counter = 0;
+
+Element::Element(Environment *environment, double x, double y) : position_(x,y), environment_(environment) {
+    id_counter++;
+    label_ = "Element" + std::to_string(id_counter);
+}
 
 double Element::get_position_x() const { return position_.x(); }
 double Element::get_position_y() const { return position_.y(); }
@@ -20,9 +27,17 @@ void Element::set_collision_radius(double collision_radius) { collision_radius_ 
 Environment *Element::get_environment() const { return environment_; }
 void Element::set_environment(Environment *environment) { environment_ = environment; }
 
-FixedElement::FixedElement(Environment *environment, double x, double y) : Element(environment, x, y ) {}
+std::string Element::get_label() const { return label_; }
 
-MovableElement::MovableElement(Environment *environment, double x, double y) : Element(environment, x, y) {}
+FixedElement::FixedElement(Environment *environment, double x, double y) : Element(environment, x, y ) {
+    id_counter++;
+    label_ = "FixedElement" + std::to_string(id_counter);
+}
+
+MovableElement::MovableElement(Environment *environment, double x, double y) : Element(environment, x, y) {
+    id_counter++;
+    label_ = "MovableElement" + std::to_string(id_counter);
+}
 
 double MovableElement::get_linear_speed() const { return linear_speed_; }
 void MovableElement::set_linear_speed(double linear_speed) { linear_speed_ = linear_speed; }

@@ -31,7 +31,7 @@ Vector2<double> Environment::center() const
 
 unsigned int Environment::get_elements_number() const { return elements_.size(); }
 
-const std::vector<Element*> Environment::get_elements() const { return elements_; }
+std::vector<Element*> Environment::get_elements() const { return elements_; }
 
 void Environment::add_element(Element *element)
 {

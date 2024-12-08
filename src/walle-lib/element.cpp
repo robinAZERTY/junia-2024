@@ -4,7 +4,8 @@ unsigned int Element::id_counter = 0;
 unsigned int FixedElement::id_counter = 0;
 unsigned int MovableElement::id_counter = 0;
 
-Element::Element(Environment *environment, double x, double y) : position_(x,y), environment_(environment) {
+Element::Element(Environment *environment, double x, double y) : position_(x, y), environment_(environment)
+{
     id_counter++;
     label_ = "Element" + std::to_string(id_counter);
 }
@@ -29,12 +30,25 @@ void Element::set_environment(Environment *environment) { environment_ = environ
 
 std::string Element::get_label() const { return label_; }
 
-FixedElement::FixedElement(Environment *environment, double x, double y) : Element(environment, x, y ) {
+bool Element::is_size_overlapping(const Element &element) const
+{
+    return (position_ - element.position_).norm2() < (size_ + element.size_) / 2;
+}
+
+bool Element::is_colliding(const Element &element) const
+{
+    return (position_ - element.position_).norm2() < collision_radius_ + element.collision_radius_;
+}
+
+
+FixedElement::FixedElement(Environment *environment, double x, double y) : Element(environment, x, y)
+{
     id_counter++;
     label_ = "FixedElement" + std::to_string(id_counter);
 }
 
-MovableElement::MovableElement(Environment *environment, double x, double y) : Element(environment, x, y) {
+MovableElement::MovableElement(Environment *environment, double x, double y) : Element(environment, x, y)
+{
     id_counter++;
     label_ = "MovableElement" + std::to_string(id_counter);
 }
@@ -48,7 +62,8 @@ void MovableElement::set_angular_speed(double angular_speed) { angular_speed_ = 
 double MovableElement::get_mass() const { return mass_; }
 void MovableElement::set_mass(double mass) { mass_ = mass; }
 
-void MovableElement::move_according_speeds(double dt) {
+void MovableElement::move_according_speeds(double dt)
+{
     position_ += Vector2<double>{cos(orientation_), sin(orientation_)} * linear_speed_ * dt;
     orientation_ += angular_speed_ * dt;
 }

@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <walle-lib/element.hpp>
 #include <walle-lib/environnement.hpp>
 #include <walle-lib/robot.hpp>
 
@@ -19,6 +20,7 @@ TEST(Environment, test_constructor_invalid_behavior) {
     EXPECT_THROW(Environment e(100, -100, -100, 100), InvalidBoundariesEnvironmentException);
     
 }
+
 
 class TestElement : public Element {
 public:
@@ -52,14 +54,28 @@ TEST(Environment, test_add_robot) {
     EXPECT_EQ(r1.get_environment(), &e);
 }
 
+class TestElement2 : public Element {
+public:
+    TestElement2(Environment *environment = nullptr, double x = 0, double y = 0) : Element(environment, x, y) {}
+
+    int update(double dt) override {
+        return 0;
+    }
+};
 TEST(Environment, test_update) {
     // Creates an environment of size 200m x 200m with right values.
     Environment e{-100,100,-100,100};
     TestElement e1, e2;
+    TestElement2 e3;
 
     e.add_element(&e1);
     e.add_element(&e2);
+    e.add_element(&e3);
     EXPECT_EQ(e.update(1), 0);
     EXPECT_EQ(e.update(1), 0);
     EXPECT_NEAR(e.time(), 2, 0.00001);
+
+    EXPECT_EQ(e.get_elements<TestElement>().size(), 2);
+    EXPECT_EQ(e.get_elements<Element>().size(), 3);
+    EXPECT_EQ(e.get_elements<TestElement2>().size(), 1);
 }

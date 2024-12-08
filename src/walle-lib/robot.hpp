@@ -32,8 +32,8 @@ public:
     const double get_battery() const { return battery_; }
     void set_battery(double battery) { battery_ = min(battery, battery_capacity_); }
 
-private:
-    int update_battery(double dt);
+protected:
+    virtual int update_battery(double dt);
 
     double battery_capacity_ = 1e5; // J
     double battery_ = battery_capacity_;

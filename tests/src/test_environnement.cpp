@@ -51,3 +51,15 @@ TEST(Environment, test_add_robot) {
     EXPECT_EQ(e.get_elements_number(), 2);
     EXPECT_EQ(r1.get_environment(), &e);
 }
+
+TEST(Environment, test_update) {
+    // Creates an environment of size 200m x 200m with right values.
+    Environment e{-100,100,-100,100};
+    TestElement e1, e2;
+
+    e.add_element(&e1);
+    e.add_element(&e2);
+    EXPECT_EQ(e.update(1), 0);
+    EXPECT_EQ(e.update(1), 0);
+    EXPECT_NEAR(e.time(), 2, 0.00001);
+}

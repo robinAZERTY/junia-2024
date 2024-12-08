@@ -38,3 +38,14 @@ void Environment::add_element(Element *element)
     elements_.push_back(element);
     element->set_environment(this);
 }
+
+int Environment::update(double dt)
+{
+    for (Element *element : elements_)
+        if (element->update(dt)<0)
+            return -1;
+    time_ += dt;
+    return 0;
+}
+
+double Environment::time() const { return time_; }

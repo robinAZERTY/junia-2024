@@ -25,10 +25,15 @@ public:
     unsigned int get_elements_number() const;
     void add_element(Element* element);
 
+    int update(double dt);
+
+    double time() const;
+
 private:
     double left_;
     double right_;
     double top_;
     double bottom_;
     std::vector<Element*> elements_;
+    double time_;
 };

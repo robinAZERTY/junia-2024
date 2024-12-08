@@ -3,7 +3,7 @@
 #include <walle-lib/robot.hpp>
 
 // Validates the behavior of the constructors
-TEST(Environnment, test_constructor) {
+TEST(Environment, test_constructor) {
     // Creates an environment of size 200m x 200m
     Environment e{-100,+100,-100,100};
 
@@ -13,17 +13,26 @@ TEST(Environnment, test_constructor) {
     EXPECT_NEAR(e.bottom(), 100, 0.00001);
 }
 
-TEST(Environnment, test_constructor_invalid_behavior) {
+TEST(Environment, test_constructor_invalid_behavior) {
     // Creates an environment of size 200m x 200m but with wrong
     // values.
     EXPECT_THROW(Environment e(100, -100, -100, 100), InvalidBoundariesEnvironmentException);
     
 }
 
-TEST(Environnment, test_add_element) {
+class TestElement : public Element {
+public:
+    TestElement(Environment *environment = nullptr, double x = 0, double y = 0) : Element(environment, x, y) {}
+
+    int update(double dt) override {
+        return 0;
+    }
+};
+
+TEST(Environment, test_add_element) {
     // Creates an environment of size 200m x 200m with right values.
     Environment e{-100,100,-100,100};
-    Element e1, e2;
+    TestElement e1, e2;
 
     EXPECT_EQ(e.get_elements_number(), 0);
     e.add_element(&e1);
@@ -31,7 +40,7 @@ TEST(Environnment, test_add_element) {
     EXPECT_EQ(e.get_elements_number(), 2);
 }
 
-TEST(Environnment, test_add_robot) {
+TEST(Environment, test_add_robot) {
     // Creates an environment of size 200m x 200m with right values.
     Environment e{-100,100,-100,100};
     Robot r1, r2;

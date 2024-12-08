@@ -13,6 +13,8 @@ class Hole : public FixedElement {
         Element* get_element_inside() const;
         int set_element_inside(Element* element_inside);
 
+        int update(double dt) override{return 0;}
+
 
     private:
         double depth_{0};

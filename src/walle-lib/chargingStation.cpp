@@ -18,11 +18,12 @@ void ChargingStation::detach(Robot* robot) {
     robotsInCharge_.erase(std::remove(robotsInCharge_.begin(), robotsInCharge_.end(), robot), robotsInCharge_.end());
 }
 
-void ChargingStation::run(const double dt) {
+int ChargingStation::update(const double dt) {
     for (Robot* robot : robotsInCharge_) {
         robot->set_battery(robot->get_battery() + ChargingStationProperties::REFUEL_RATE * dt);
         if (robot->get_battery_ratio() >= 1 || !isNear(robot)) {
             detach(robot);
         }
     }
+    return 0;
 }

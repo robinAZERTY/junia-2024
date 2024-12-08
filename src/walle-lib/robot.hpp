@@ -25,7 +25,7 @@ public:
 
     enum STATUS { OK, LOW_BATTERY, EMPTY_BATTERY };
     /// update the robot's position and orientation according to its linear and angular speeds.
-    int run(double dt);
+    int update(double dt) override;
 
     double get_battery_ratio() const { return battery_ / battery_capacity_; }
 

@@ -11,7 +11,7 @@ void Tree::feed(double nutrients)
     soil_nutrients_ += nutrients;
 }
 
-double Tree::grow(double dt)
+int Tree::update(double dt)
 {
     if (!planted_)
     {
@@ -32,7 +32,7 @@ double Tree::grow(double dt)
         soil_nutrients_ = TreeProperties::MIN_NUTRIENTS;
     }
 
-    return height_;
+    return 0;
 }
 
 double Tree::get_height() const { return height_; }

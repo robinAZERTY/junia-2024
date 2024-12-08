@@ -17,11 +17,10 @@ void Robot::stop()
     set_angular_speed(0);
 }
 
-int Robot::run(double dt)
+int Robot::update(double dt)
 {
+    MovableElement::move_according_speeds(dt);
     auto battery_status = update_battery(dt);
-    move_according_velocities(dt);
-
     if (battery_status == Robot::STATUS::EMPTY_BATTERY)
         return Robot::STATUS::EMPTY_BATTERY;
     if (battery_status == Robot::STATUS::LOW_BATTERY)

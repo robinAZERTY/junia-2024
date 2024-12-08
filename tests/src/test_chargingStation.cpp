@@ -9,6 +9,6 @@ TEST(ChargingStation, test_attach)
     cs.set_position(0, 0);
     r.set_position(0, 0.2);
     EXPECT_EQ(cs.attach(&r), 0);
-    cs.run(1);
+    cs.update(1);
     EXPECT_NEAR(r.get_battery(), ChargingStationProperties::REFUEL_RATE, 0.00001);    
 }

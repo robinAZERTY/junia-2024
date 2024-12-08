@@ -19,7 +19,7 @@ TEST(Tree, test_growth)
     Vector2 last_grow_state{t.get_size(), t.get_height()};
     for (int i = 0; i < 100; i++)
     {
-        t.grow(100);
+        t.update(100);
         // std::cout << "Height: " << t.get_height() << " Size: " << t.get_size() << std::endl;
         EXPECT_GE(t.get_size(), TreeProperties::MIN_SIZE);
         EXPECT_LE(t.get_size(), TreeProperties::MAX_SIZE);

@@ -25,6 +25,8 @@ class Element {
 
         double get_collision_radius() const;
         void set_collision_radius(double collision_radius);
+
+        virtual int update(double dt) = 0;
         
     protected :
         Vector2<double> position_{0, 0};
@@ -52,7 +54,7 @@ class MovableElement : public Element {
         double get_mass() const;
         void set_mass(double mass);
 
-        void move_according_velocities(double dt);
+        void move_according_speeds(double dt);
 
     private:
         double linear_speed_{0};

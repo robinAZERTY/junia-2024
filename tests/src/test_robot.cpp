@@ -38,7 +38,7 @@ TEST(Robot, test_move_forward) {
     float x0 = mon_robot.get_position_x();
     float y0 = mon_robot.get_position_y();
     mon_robot.set_linear_speed(0.5);
-    mon_robot.run(0.01);
+    mon_robot.move_according_speeds(0.01);
     float x1 = mon_robot.get_position_x();
     float y1 = mon_robot.get_position_y();
 

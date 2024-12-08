@@ -19,7 +19,7 @@ class Tree : public FixedElement {
 
         void feed(double nutrients);
 
-        double grow(double dt);
+        int update(double dt) override;
 
         double get_height() const;
 

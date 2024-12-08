@@ -17,7 +17,7 @@ class ChargingStation : public FixedElement {
         int attach(Robot* robot);
         void detach(Robot* robot);
         bool isNear(Robot* robot) const;
-        void run(const double dt);
+        int update(const double dt) override;
 
     private:
         std::vector<Robot*> robotsInCharge_;

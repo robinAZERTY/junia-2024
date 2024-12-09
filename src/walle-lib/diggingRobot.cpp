@@ -48,7 +48,7 @@ int DiggingRobot::update(double dt)
 
         double delta = DiggingRobotProperties::DIGGING_SPEED*dt;
         hole->set_depth(hole->get_depth() + delta);
-        soil_quantity_ -= delta;
+        soil_quantity_ += delta;
         mass_ -= delta * DiggingRobotProperties::SOIL_DENSITY;
     }
 

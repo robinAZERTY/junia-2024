@@ -24,6 +24,8 @@ public:
     void fill_soil();
     void stop_filling();
 
+    double get_soil_quantity() const { return soil_quantity_; }
+
 
 protected:
     static unsigned int id_counter;

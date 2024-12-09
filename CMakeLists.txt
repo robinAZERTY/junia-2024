@@ -27,6 +27,8 @@ add_library(walle-lib SHARED
             src/walle-lib/diggingRobot.hpp
             src/walle-lib/plantingRobot.cpp
             src/walle-lib/plantingRobot.hpp
+            src/walle-lib/wateringRobot.cpp
+            src/walle-lib/wateringRobot.hpp
             )
 
 target_include_directories(walle-lib
@@ -57,6 +59,7 @@ add_executable(all-tests
   tests/src/test_chargingStation.cpp
   tests/src/test_diggingRobot.cpp
   tests/src/test_plantingRobot.cpp
+  tests/src/test_wateringRobot.cpp
 )
 
 target_link_libraries(

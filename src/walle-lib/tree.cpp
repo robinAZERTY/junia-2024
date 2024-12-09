@@ -44,3 +44,5 @@ int Tree::update(double dt)
 }
 
 double Tree::get_height() const { return height_; }
+
+double Tree::get_soil_nutrients() const { return soil_nutrients_; }

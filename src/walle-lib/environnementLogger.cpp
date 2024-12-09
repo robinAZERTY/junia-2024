@@ -52,7 +52,7 @@ void EnvironmentLogger::log_state()
         uintptr_t element_id = reinterpret_cast<uintptr_t>(element);
 
         file << "    {\n";
-        file << "      \"id\": " << element_id << ",\n";
+        file << "      \"label\": \"" << element->get_label() << "\",\n";
         file << "      \"position_x\": " << element->get_position_x() << ",\n";
         file << "      \"position_y\": " << element->get_position_y() << ",\n";
         file << "      \"orientation\": " << element->get_orientation() << ",\n";

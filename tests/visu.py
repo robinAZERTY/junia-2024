@@ -35,6 +35,8 @@ def visualize_environment(data, delay=1):
             x = int((element['position_x'] - bounds['left']) * factor)
             y = int((bounds['bottom'] - element['position_y']) * factor)  # Inverser Y pour afficher correctement
             size = int(element['size'] * factor)
+            # put label
+            cv2.putText(img, f"{element['label']}", (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
 
             # Dessiner un cercle représentant l'élément
             cv2.circle(img, (x, y), size, (255, 0, 0), -1)  # Couleur rouge et rempli

@@ -23,6 +23,8 @@ class Tree : public FixedElement {
 
         double get_height() const;
 
+        double get_soil_nutrients() const;
+
     private:
         double height_{TreeProperties::MIN_HEIGHT};
         double soil_nutrients_{0};

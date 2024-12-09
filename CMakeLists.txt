@@ -15,8 +15,6 @@ add_library(walle-lib SHARED
             src/walle-lib/vector2.hpp
             src/walle-lib/element.hpp
             src/walle-lib/element.cpp
-            src/walle-lib/environnementLogger.cpp
-            src/walle-lib/environnementLogger.hpp
             src/walle-lib/hole.cpp
             src/walle-lib/hole.hpp
             src/walle-lib/tree.cpp

@@ -2,7 +2,6 @@
 #include <walle-lib/vector2.hpp>
 
 #include <walle-lib/robot.hpp>
-#include "walle-lib/environnementLogger.hpp"
 #include "walle-lib/diggingRobot.hpp"
 
 /// Les unités sont en mètre,
@@ -17,9 +16,7 @@ int main(int argc, char** argv)
     un_robot.set_linear_speed(1);
     un_robot.set_angular_speed(0.5);
 
-    EnvironmentLogger logger{&un_environment, "log.json"};
 
-    logger.begin();
 
 	std::cout << "beginning of the simulation" << std::endl;
 
@@ -29,24 +26,20 @@ int main(int argc, char** argv)
     for(t=0;t<5;t+=dt)
     {
         un_environment.update(dt);
-        logger.log_state();
     }
     un_robot.stop();
     un_robot.dig();
     while(un_robot.get_soil_quantity() < 0.2)
     {
         un_environment.update(dt);
-        logger.log_state();
     }
     un_robot.stop_digging();
     un_robot.set_linear_speed(0.5);
     for(t=0;t<5;t+=dt)
     {
         un_environment.update(dt);
-        logger.log_state();
     }
 
-    logger.end();
     std::cout << "end of the simulation" << std::endl;
     return 0;
 }
